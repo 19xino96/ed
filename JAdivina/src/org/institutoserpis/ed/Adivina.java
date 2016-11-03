@@ -11,7 +11,6 @@ public class Adivina {
 		Scanner input = new Scanner(System.in);
 		Random random = new Random();
 		int numeroAleatorio = random.nextInt(1000) + 1;
-		System.out.println("numeroAleatorio = " + numeroAleatorio);
 		System.out.println("Tengo esconio un número entre 1 y 1000. Adivina...");
 		
 //		do {
@@ -26,7 +25,7 @@ public class Adivina {
 		do {
 			contador++;
 			System.out.println();
-			System.out.println("(Intento: " + contador + ")");
+			System.out.printf("(Intento: %d)\n", contador);
 			System.out.print("Introduce el número: ");
 			String resp = input.nextLine();
 			int inputNum = Integer.parseInt(resp);
@@ -38,7 +37,7 @@ public class Adivina {
 		} while (!correcto);
 		System.out.println();
 		System.out.println("¡Correcto! Has adivinado el número secreto.");
-		System.out.println("Número de intentos: " + contador);
+		System.out.printf("Número de intentos: %d\n", contador);
 	}
-	
+	    
 }
