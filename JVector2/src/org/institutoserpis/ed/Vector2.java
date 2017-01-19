@@ -54,4 +54,5 @@ public class Vector2 {
 //			swap(vct, itemIndex, indexOfMin(vct, itemIndex));
 		}
 	}
+	
 }
