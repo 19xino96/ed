@@ -6,57 +6,45 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		labelSaludo.Text = "Hola. Pon tu nombre y pulsa Adelante";
 
 		Console.WriteLine("27/10 = " + 27/10 + " resto = " + 27%10);
 
+
 		buttonGoForward.Clicked += delegate {
-			labelSaludo.Text = "Hola (desde delegate) " + entryNombre.Text;
+			labelSaludo.Text = "Hola (desde el delegate) " + entryNombre.Text;
 		};
 
 		Table table = new Table (9, 10, true);
-//		for (uint index=0; index<90; index++) {
+//		for (uint index = 0; index < 90; index++) {
 //			Button button = new Button ();
-//			button.Label = " " + (index+1);
+//			button.Label = " " + (index + 1);
 //			button.Visible = true;
-//			uint column = index / 10;
-//			uint row = index % 10;
-//			table.Attach(button, row, row+1, column, column+1);
-//			vBoxMain.Add (button); //fuera
+//			uint row = index / 10;
+//			uint column = index % 10;
+//			table.Attach (button, column, column + 1, row, row + 1);
 //			button.Clicked += delegate {
 //				Console.WriteLine("clicked en " + button.Label);
 //			};
 //		}
-		int index = 1;
-		for (uint column = 0; column < 9; column++) {
-			for (uint row = 0; row < 10; row++) {
+		for (uint row = 0; row < 9; row++)
+			for (uint column = 0; column < 10; column++) {
+				uint index = row * 10 + column;
 				Button button = new Button ();
-				button.Label = " " + (index);
+				button.Label = " " + (index + 1);
 				button.Visible = true;
-				table.Attach(button, row, row+1, column, column+1);
-				vBoxMain.Add (button); //fuera
+				table.Attach (button, column, column + 1, row, row + 1);
 				button.Clicked += delegate {
 					Console.WriteLine("clicked en " + button.Label);
 				};
-				index++;
 			}
-		}
 		table.Visible = true;
 		vBoxMain.Add (table);
-
-
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
-		Console.WriteLine ("OnDeleteEvent");
 		Application.Quit ();
 		a.RetVal = true;
 	}
 
-//	protected void OnButtonGoForwardClicked (object sender, EventArgs e)
-//	{
-//		Button button = (Button)sender;
-//		labelSaludo.Text = "Hola " + entryNombre.Text + " pulsado " + button.Label;
-//	}
 }
