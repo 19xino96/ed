@@ -72,6 +72,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EspeakHelper.cs" />
     <Compile Include="EspeakHelperTest.cs" />
+    <Compile Include="Bombo.cs" />
+    <Compile Include="Panel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
