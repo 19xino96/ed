@@ -3,6 +3,8 @@ using System.Diagnostics;
 using Gtk;
 using System.Collections.Generic;
 
+using CBingo;
+
 public partial class MainWindow: Gtk.Window
 {	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
@@ -52,7 +54,7 @@ public partial class MainWindow: Gtk.Window
 			bolas.Remove(bola);
 			if (bolas.Count == 0)
 				buttonGoForward.Sensitive = false;
-			Process.Start("espeak", toSpeak(bola));
+			Process.Start("espeak", " -v es " + EspeakHelper.ToEspeak(bola));
 			buttons[bola - 1].ModifyBg (StateType.Normal, new Gdk.Color (228, 128, 0));
 		};
 
@@ -64,13 +66,15 @@ public partial class MainWindow: Gtk.Window
 		
 	}
 
-	private string toSpeak(int bola) {
-		if (bola > 9) {
-			return "\"" + bola.ToString() + ". " + (bola/10).ToString() + ", " + (bola%10).ToString() + "\" -v es";
-		} else {
-			return bola.ToString() + " -v es";
-		}
-	}
+//	private string toEspeak(int bola) {
+//		//string text = bola.ToString ();
+//		//text = text + " " + text[0] + " " + text[1];
+//		if (bola > 9) {
+//			return "\"" + bola.ToString() + ". " + (bola/10).ToString() + ", " + (bola%10).ToString() + "\" -v es";
+//		} else {
+//			return bola.ToString() + " -v es";
+//		}
+//	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
